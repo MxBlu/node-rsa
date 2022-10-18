@@ -69,7 +69,7 @@ module.exports = (function () {
         this.keyPair = new rsa.Key();
         this.$cache = {};
 
-        if (Buffer.isBuffer(key) || _.isString(key)) {
+        if (Buffer.isBuffer(key) || _.isString(key) || key.n || key.d) {
             this.importKey(key, format);
         } else if (_.isObject(key)) {
             this.generateKeyPair(key.b, key.e);
